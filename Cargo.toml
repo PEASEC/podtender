@@ -1,0 +1,84 @@
+[package]
+name = "podtender"
+version = "0.1.0"
+edition = "2021"
+authors = ["Julian Schindel <mail@arctic-alpaca.de>"]
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/PEASEC/podtender"
+description = """
+A rust client for the podman API.
+"""
+categories = ["api-bindings"]
+keywords = ["podman", "containers"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+path = "src/lib.rs"
+name = "podtender"
+
+# Tests are listed as targets to allow for the `examples` features. Otherwise, the feature wouldn't be enabled in
+# integration tests. https://github.com/rust-lang/cargo/issues/2911
+[[test]]
+path = "tests/containers.rs"
+name = "containers-test"
+required-features = ["examples", "enable-tracing"]
+
+[[test]]
+path = "tests/images.rs"
+name = "images-test"
+required-features = ["examples", "enable-tracing"]
+
+[[test]]
+path = "tests/networks.rs"
+name = "networks-test"
+required-features = ["examples", "enable-tracing"]
+
+[[test]]
+path = "tests/pod_prune.rs"
+name = "pod_prune-test"
+required-features = ["examples", "enable-tracing"]
+
+[[test]]
+path = "tests/pods.rs"
+name = "pods-test"
+required-features = ["examples", "enable-tracing"]
+
+[[test]]
+path = "tests/system.rs"
+name = "system-test"
+required-features = ["examples", "enable-tracing"]
+
+[[test]]
+path = "tests/volumes.rs"
+name = "volumes-test"
+required-features = ["examples", "enable-tracing"]
+
+[features]
+# Builder pattern for request parameter
+builder = ["derive_builder"]
+# Examples for request parameter via ExampleValues trait
+examples = []
+# Tracing support
+enable-tracing = ["tracing"]
+
+[dependencies]
+asynchronous-codec = { version="0.6.0", features = ["json"]}
+derive_builder = { version="0.10.2", optional = true}
+futures = "0.3.21"
+hyper = { version = "0.14.17", features = ["server", "client", "http1", "runtime", "stream"] }
+hyperlocal = { version = "0.8.0", features = ["client"]}
+serde = { version = "1.0.136", features = ["derive"] }
+serde_json = "1.0.79"
+serde_path_to_error = "0.1.7"
+serde_qs = "0.9.1"
+serde_with = {version ="1.12.0", features = ["json", "macros"]}
+tracing = {version  ="0.1.32", optional = true}
+thiserror = "1.0.30"
+
+[dev-dependencies]
+lazy_static = "1.4.0"
+serial_test = "0.6.0"
+tokio = { version = "1.17.0", features = ["rt-multi-thread", "net", "macros", "io-std", "io-util"] }
+tracing-subscriber = {version = "0.3.9", features = ["env-filter", "registry"]}
