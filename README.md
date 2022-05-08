@@ -3,6 +3,9 @@
 # Podtender
 An async rust client library for the [Podman REST API](https://docs.podman.io/en/latest/Reference.html).
 
+[![Crates.io](https://img.shields.io/crates/v/podtender.svg)](https://crates.io/crates/podtender)
+[![Documentation](https://img.shields.io/docsrs/podtender)](https://docs.rs/podtender)
+
 ## Usage
 
 ### Example
