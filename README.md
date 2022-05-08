@@ -62,6 +62,11 @@ to showcase a usable example parameter per API operation.
 Podtender uses [hyper](https://github.com/hyperium/hyper) and requires [tokio](https://github.com/tokio-rs/tokio).
 An active Podman socket is needed to communicate with Podman.
 
+### Tests
+To run the integration tests, the `tracing` and `examples` features are required. To allow easy testing, the tests are 
+defined as target in the [Cargo.toml](Cargo.toml) file and can be run with `cargo test --test {target-name} --features="examples tracing"`
+where `{target-name}` is one of the specified targets (e.g. `containers-test`).
+
 ### Project structure
 The Podman socket and network operations are internally managed by the `PodmanService` struct.
 
