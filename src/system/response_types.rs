@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
-#[derive(Serialize, Deserialize, Debug, Clone, Eq, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
 #[serde(deny_unknown_fields)]
 pub struct GetInfoResponse {
     pub host: Option<HostInfo>,
@@ -11,7 +11,7 @@ pub struct GetInfoResponse {
     pub version: Option<Version>,
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone, Eq, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
 #[serde(deny_unknown_fields)]
 #[serde(rename_all = "camelCase")]
 pub struct HostInfo {
@@ -22,6 +22,7 @@ pub struct HostInfo {
     pub cgroup_version: Option<String>,
     pub conmon: Option<ConmonInfo>,
     pub cpus: Option<i64>,
+    pub cpu_utilization: Option<CpuUsage>,
     pub distribution: Option<DistributionInfo>,
     pub event_logger: Option<String>,
     pub hostname: Option<String>,
@@ -50,6 +51,15 @@ pub struct ConmonInfo {
     pub package: Option<String>,
     pub path: Option<String>,
     pub version: Option<String>,
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
+#[serde(deny_unknown_fields)]
+#[serde(rename_all = "camelCase")]
+pub struct CpuUsage {
+    pub idle_percent: Option<f32>,
+    pub system_percent: Option<f32>,
+    pub user_percent: Option<f32>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone, Eq, PartialEq)]
@@ -135,6 +145,8 @@ pub struct StoreInfo {
     pub graph_driver_name: Option<String>,
     pub graph_options: Option<HashMap<String, GraphOptionsEntry>>,
     pub graph_root: Option<String>,
+    pub graph_root_allocated: Option<u64>,
+    pub graph_root_used: Option<u64>,
     pub graph_status: Option<HashMap<String, String>>,
     pub image_copy_tmp_dir: Option<String>,
     pub image_store: Option<ImageStore>,
@@ -167,6 +179,7 @@ pub struct Version {
     pub built_time: Option<String>,
     pub git_commit: Option<String>,
     pub go_version: Option<String>,
+    pub os: Option<String>,
     pub os_arch: Option<String>,
     pub version: Option<String>,
 }

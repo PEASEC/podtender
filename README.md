@@ -28,7 +28,7 @@ podman system service unix:///home/`whoami`/podman.sock --log-level=debug --time
 curl --unix-socket /home/`whoami`/podman.sock http://d/v4.0.0/libpod/info
 ```
 ### Supported Podman version
-We aim to support the latest Podman version only. Currently, this is 4.0.x.
+We aim to support the latest Podman version only. Currently, this is 4.1.x.
 
 ### Crate features
 #### Builder pattern via derive builder
