@@ -56,7 +56,7 @@ The `examples` feature enables initialized parameters via the `ExampleValues` tr
 to showcase a usable example parameter per API operation.
 
 #### Tracing
-`enable-tracing` enables logs/tracing powered by [Tokio's tracing crate](https://github.com/tokio-rs/tracing).
+`tracing` enables logs/tracing powered by [Tokio's tracing crate](https://github.com/tokio-rs/tracing).
 
 ### Requirements
 Podtender uses [hyper](https://github.com/hyperium/hyper) and requires [tokio](https://github.com/tokio-rs/tokio).
