@@ -428,17 +428,17 @@ async fn checkpoint_container_from_example() {
 
     utils::run_container(&container_name);
 
-    let export = podman_service.containers().checkpoint(parameter).await;
-    if let Err(err) = export {
+    let checkpoint = podman_service.containers().checkpoint(parameter).await;
+    if let Err(err) = checkpoint {
         utils::print_path_if_serde_error(&err);
         utils::delete_container(&container_name);
         panic!("{:#?}", err);
     }
-    let mut export = export.unwrap();
+    let mut checkpoint = checkpoint.unwrap();
 
     let mut file: Vec<u8> = vec![];
 
-    while let Some(chunk) = export.next().await {
+    while let Some(chunk) = checkpoint.next().await {
         match chunk {
             Ok(mut chunk) => {
                 file.append(&mut chunk);
