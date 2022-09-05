@@ -1,3 +1,14 @@
+# v0.3.0:
+### Added: -
+
+### Changed:
+* support podman version 4.2.0
+* **breaking:** fix pods `stats(...)` method
+* add `PodStatsResponse`
+* update dependencies
+
+### Removed: -
+
 # v0.2.0:
 ### Added: -
 
