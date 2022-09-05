@@ -233,7 +233,7 @@ Unless you explicitly state otherwise, any contribution intentionally submitted 
   - [x] Create a pod
   - [x] List pods
   - [x] Prune unused pods
-  - [x] Get stats for one or more pods (currently broken, see Podman [issue](https://github.com/containers/podman/issues/13213))
+  - [x] Get stats for one or more pods
 - [x] volumes
   - [x] Remove volume
   - [x] Volume exists

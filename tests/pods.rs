@@ -401,8 +401,6 @@ async fn list_pods_from_example() {
     }
 }
 
-// currently broken, not sure what would be correct
-// issue: https://github.com/containers/podman/issues/13213
 #[tokio::test]
 async fn multiple_pods_stats_streaming() {
     let podman_service = utils::setup();
