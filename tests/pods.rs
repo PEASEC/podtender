@@ -427,7 +427,6 @@ async fn multiple_pods_stats_streaming() {
     let mut found_pod = false;
     while let Some(Ok(stats_vec)) = stats.next().await {
         for stats_entry in stats_vec {
-            println!("{stats_entry:?}");
             if stats_entry.name.unwrap() == "multiple_pods_stats_streaming".to_owned() {
                 found_container = true;
             }
