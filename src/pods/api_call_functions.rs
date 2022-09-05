@@ -250,7 +250,7 @@ impl<'service> Pods<'service> {
     pub async fn stats(
         &self,
         parameter: PodStatsParameter,
-    ) -> Result<impl Stream<Item = Result<ListPodProcessesResponse>>> {
+    ) -> Result<impl Stream<Item = Result<Vec<PodStatsResponse>>>> {
         let endpoint = format!("{}stats", utils::create_endpoint("/libpod/pods/"),);
 
         // Start workaround cause podman only supports query arrays in this format:

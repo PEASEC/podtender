@@ -411,43 +411,35 @@ async fn multiple_pods_stats_streaming() {
     let pod_name = String::from("multiple_pods_stats_streaming_pod");
     let container_name = String::from("multiple_pods_stats_streaming");
 
-    utils::create_pod(&pod_name);
+    let mut pod_id = utils::create_pod(&pod_name);
     utils::create_container_with_pod(&container_name, &pod_name);
     utils::start_pod(&pod_name);
 
-    let processes = podman_service.pods().stats(parameter).await;
-    if let Err(err) = processes {
+    let stats = podman_service.pods().stats(parameter).await;
+    if let Err(err) = stats {
         utils::delete_pod(&pod_name);
         panic!("{:#?}", err);
     }
-    let mut processes = processes.unwrap();
+    let mut stats = stats.unwrap();
 
-    while let Some(process_entry) = processes.next().await {
-        match process_entry {
-            Ok(process_entry) => {
-                assert_eq!(
-                    vec![
-                        String::from("USER"),
-                        String::from("PID"),
-                        String::from("PPID"),
-                        String::from("%CPU"),
-                        String::from("ELAPSED"),
-                        String::from("TTY"),
-                        String::from("TIME"),
-                        String::from("COMMAND")
-                    ],
-                    process_entry.titles.unwrap()
-                );
+    // shorten pod id as used in podman
+    pod_id.truncate(12);
 
-                utils::delete_pod(&pod_name);
-                return;
+    let mut found_container = false;
+    let mut found_pod = false;
+    while let Some(Ok(stats_vec)) = stats.next().await {
+        for stats_entry in stats_vec {
+            println!("{stats_entry:?}");
+            if stats_entry.name.unwrap() == "multiple_pods_stats_streaming".to_owned() {
+                found_container = true;
             }
-            Err(err) => {
-                utils::delete_pod(&pod_name);
-                panic!("{:#?}", err);
+            if stats_entry.pod.unwrap() == pod_id {
+                found_pod = true;
             }
+            assert!(stats_entry.cid.is_some());
         }
     }
     utils::delete_pod(&pod_name);
-    panic!("No stats got returned");
+    assert!(found_container);
+    assert!(found_pod);
 }

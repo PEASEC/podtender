@@ -199,6 +199,31 @@ pub struct ErrIdResponse {
     pub id: Option<String>,
 }
 
+#[derive(Serialize, Deserialize, Debug, Clone, Eq, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct PodStatsResponse {
+    #[serde(rename = "BlockIO")]
+    pub block_io: Option<String>,
+    #[serde(rename = "CID")]
+    pub cid: Option<String>,
+    #[serde(rename = "CPU")]
+    pub cpu: Option<String>,
+    #[serde(rename = "Mem")]
+    pub mem: Option<String>,
+    #[serde(rename = "MemUsage")]
+    pub mem_usage: Option<String>,
+    #[serde(rename = "MemUsageBytes")]
+    pub mem_usage_bytes: Option<String>,
+    #[serde(rename = "Name")]
+    pub name: Option<String>,
+    #[serde(rename = "NetIO")]
+    pub net_io: Option<String>,
+    #[serde(rename = "PIDS")]
+    pub pids: Option<String>,
+    #[serde(rename = "Pod")]
+    pub pod: Option<String>,
+}
+
 pub type RemovePodResponse = ErrIdResponse;
 pub type PrunePodsResponse = ErrIdResponse;
 
