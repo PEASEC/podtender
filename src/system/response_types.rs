@@ -131,6 +131,7 @@ pub struct SlirpInfo {
 #[derive(Serialize, Deserialize, Debug, Clone, Eq, PartialEq)]
 #[serde(deny_unknown_fields)]
 pub struct Plugins {
+    pub authorization: Option<Vec<String>>,
     pub log: Option<Vec<String>>,
     pub network: Option<Vec<String>>,
     pub volume: Option<Vec<String>>,
@@ -210,6 +211,8 @@ pub struct Event {
     pub time: Option<u64>,
     #[serde(rename = "timeNano")]
     pub time_nano: Option<u64>,
+    #[serde(rename = "HealthStatus")]
+    pub health_status: Option<String>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone, Eq, PartialEq)]

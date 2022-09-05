@@ -31,6 +31,8 @@ pub struct InspectPodResponse {
     pub create_infra: Option<bool>,
     pub device_read_bps: Option<InspectBlkioThrottleDevice>,
     pub devices: Option<Vec<InspectDevice>>,
+    #[serde(rename = "ExitPolicy")]
+    pub exit_policy: Option<String>,
     #[serde(rename = "Hostname")]
     pub hostname: Option<String>,
     #[serde(rename = "Id")]
@@ -108,6 +110,7 @@ pub struct InspectPodInfraConfig {
     #[serde(rename = "StaticMAC")]
     pub static_mac: Option<String>,
     pub userns: Option<String>,
+    pub uts_ns: Option<String>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone, Eq, PartialEq)]

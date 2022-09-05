@@ -162,6 +162,8 @@ pub struct InspectContainerResponse {
     pub image_name: Option<String>,
     #[serde(rename = "IsInfra")]
     pub is_infra: Option<bool>,
+    #[serde(rename = "IsService")]
+    pub is_service: Option<bool>,
     #[serde(rename = "MountLabel")]
     pub mount_label: Option<String>,
     #[serde(rename = "Mounts")]
