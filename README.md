@@ -9,7 +9,7 @@ An async rust client library for the [Podman REST API](https://docs.podman.io/en
 ## Usage
 
 ### Example
-```rust
+```ignore
 use tokio;
 use podtender::podman_service::PodmanService;
 
@@ -31,13 +31,13 @@ podman system service unix:///home/`whoami`/podman.sock --log-level=debug --time
 curl --unix-socket /home/`whoami`/podman.sock http://d/v4.0.0/libpod/info
 ```
 ### Supported Podman version
-We aim to support the latest Podman version only. Currently, this is 4.1.x.
+We aim to support the latest Podman version only. Currently, this is 4.4.x.
 
 ### Crate features
 #### Builder pattern via derive builder
 The `builder` feature enables the builder pattern for request types. This is implemented with the [builder derive macro](https://github.com/colin-kiegel/rust-derive-builder).
 IDE support for code created by macros may be limited.
-```rust
+```ignore
 // with builder feature
 let create_volume_parameter = CreateVolumeParameterBuilder::default()
     .driver("local".to_owned())
@@ -91,7 +91,7 @@ use it with `podman_service.pods().start(parameter).await` and expect `podtender
 * Podtender currently only builds on Linux since tokio only builds support for unix sockets on Linux 
 * Podman (API) is treated as trusted and in testing as source of truth
 * To create a container in bridge network mode, use this as starting point:
-  ```
+  ```ignore
   CreateContainerParameter {
         netns: Some(Namespace {
             nsmode: Some("bridge".to_owned()),
@@ -101,7 +101,7 @@ use it with `podman_service.pods().start(parameter).await` and expect `podtender
     };
   ```
 * The following error indicates the Podman socket not being available. If this happens in tests, rerunning recreates the socket for the defined ttl and should get rid of the error.
-  ```
+  ```ignore
    HyperError(
        hyper::Error(
            Connect,
