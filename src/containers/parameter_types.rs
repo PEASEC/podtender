@@ -624,6 +624,7 @@ impl TryFrom<ListContainersParameter> for ListContainersParameterQuery {
 pub struct DeleteContainerParameter {
     #[serde(skip_serializing)]
     pub container_name: String,
+    pub depend: Option<bool>,
     pub force: Option<bool>,
     pub ignore: Option<bool>,
     pub timeout: Option<u32>,
@@ -635,6 +636,7 @@ impl ExampleValues for DeleteContainerParameter {
     fn example() -> Self {
         Self {
             container_name: String::from("DeleteContainerParameter"),
+            depend: Some(false),
             force: Some(true),
             ignore: Some(false),
             timeout: Some(0),

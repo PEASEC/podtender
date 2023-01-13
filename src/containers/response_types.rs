@@ -158,6 +158,8 @@ pub struct InspectContainerResponse {
     pub id: Option<String>,
     #[serde(rename = "Image")]
     pub image: Option<String>,
+    #[serde(rename = "ImageDigest")]
+    pub image_digest: Option<String>,
     #[serde(rename = "ImageName")]
     pub image_name: Option<String>,
     #[serde(rename = "IsInfra")]
@@ -225,6 +227,8 @@ pub struct InspectContainerConfig {
     pub env: Option<Vec<String>>,
     #[serde(rename = "Healthcheck")]
     pub healthcheck: Option<Schema2HealthConfig>,
+    #[serde(rename = "HealthcheckOnFailureAction")]
+    pub healthcheck_on_failure_action: Option<String>,
     #[serde(rename = "Hostname")]
     pub hostname: Option<String>,
     #[serde(rename = "Image")]
@@ -237,6 +241,10 @@ pub struct InspectContainerConfig {
     pub open_stdin: Option<bool>,
     #[serde(rename = "Passwd")]
     pub passwd: Option<bool>,
+    #[serde(rename = "sdNotifyMode")]
+    pub sd_notify_mode: Option<String>,
+    #[serde(rename = "sdNotifySocket")]
+    pub sd_notify_socket: Option<String>,
     #[serde(rename = "Secrets")]
     pub secrets: Option<Vec<InspectSecret>>,
     #[serde(rename = "StdinOnce")]

@@ -152,6 +152,7 @@ pub struct StoreInfo {
     pub image_copy_tmp_dir: Option<String>,
     pub image_store: Option<ImageStore>,
     pub run_root: Option<String>,
+    pub transient_store: Option<bool>,
     pub volume_path: Option<String>,
 }
 
