@@ -70,6 +70,7 @@ async fn does_not_exists_from_example() {
     }
 }
 
+// Run separated in case of failure when running all tests.
 #[tokio::test]
 async fn export_from_example() {
     let podman_service = utils::setup();
@@ -113,6 +114,7 @@ async fn export_from_example() {
     panic!("No export got returned");
 }
 
+// Run separated in case of failure when running all tests.
 #[tokio::test]
 async fn inspect_from_example() {
     let podman_service = utils::setup();
