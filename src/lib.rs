@@ -16,4 +16,4 @@ pub mod example_values_trait;
 
 /// The currently targeted podman api version. Will be used in the requests to the api as follows:
 /// `http://d/{PODMAN_API_VERSION}/libpod/...`
-static PODMAN_API_VERSION: &str = "/v4.2.0";
+static PODMAN_API_VERSION: &str = "/v4.4.0";
