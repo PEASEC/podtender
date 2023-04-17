@@ -79,6 +79,6 @@ thiserror = "1.0.31"
 
 [dev-dependencies]
 lazy_static = "1.4.0"
-serial_test = "1.0.0"
+serial_test = "2.0.0"
 tokio = { version = "1.18.1", features = ["rt-multi-thread", "net", "macros", "io-std", "io-util"] }
 tracing-subscriber = {version = "0.3.11", features = ["env-filter", "registry"]}
