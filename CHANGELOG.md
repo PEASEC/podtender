@@ -1,3 +1,12 @@
+# v0.5.0:
+### Added: -
+
+### Changed:
+* support podman version 4.5.0
+* update dependencies
+
+### Removed: -
+
 # v0.4.0:
 ### Added: -
 
