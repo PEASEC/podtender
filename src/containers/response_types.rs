@@ -535,6 +535,8 @@ pub struct InspectAdditionalNetwork {
     pub additional_mac_addresses: Option<Vec<String>>,
     #[serde(rename = "Aliases")]
     pub aliases: Option<Vec<String>>,
+    #[serde(rename = "DriverOpts")]
+    pub driver_opts: Option<String>,
     #[serde(rename = "EndpointID")]
     pub endpoint_id: Option<String>,
     #[serde(rename = "Gateway")]

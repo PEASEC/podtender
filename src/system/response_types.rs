@@ -23,6 +23,7 @@ pub struct HostInfo {
     pub conmon: Option<ConmonInfo>,
     pub cpus: Option<i64>,
     pub cpu_utilization: Option<CpuUsage>,
+    pub database_backend: Option<String>,
     pub distribution: Option<DistributionInfo>,
     pub event_logger: Option<String>,
     pub hostname: Option<String>,
